@@ -23,9 +23,9 @@ docker pull pman0214/h8300-elf-gcc-alpine
 Default WORKDIR is ``/app``.
 
 ```bash
-$ docker run --rm -it -v $PWD:/app pman0214/alpine-texlive-ja-epspdf 'h8300-elf-gcc -o test.elf test.c'
-$ docker run --rm -it -v $PWD:/app pman0214/alpine-texlive-ja-epspdf 'h8300-elf-objcopy -j .text -j .data -O srec test.elf test.mot'
-$ docker run --rm -it --device=/dev/ttyUSB0 -v $PWD:/app pman0214/alpine-texlive-ja-epspdf 'kz_h8write -3069 -f20 test.mot /dev/ttyUSB0'
+$ docker run --rm -it -v $PWD:/app pman0214/h8300-elf-gcc-alpine 'h8300-elf-gcc -o test.elf test.c'
+$ docker run --rm -it -v $PWD:/app pman0214/h8300-elf-gcc-alpine 'h8300-elf-objcopy -j .text -j .data -O srec test.elf test.mot'
+$ docker run --rm -it --device=/dev/ttyUSB0 -v $PWD:/app pman0214/h8300-elf-gcc-alpine 'kz_h8write -3069 -f20 test.mot /dev/ttyUSB0'
 ```
 
 ## Content
