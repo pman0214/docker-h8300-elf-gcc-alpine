@@ -3,8 +3,7 @@ FROM frolvlad/alpine-gxx
 RUN set -x && \
 	echo '### install build tools and download source files' && \
 	apk update && \
-	apk add --no-cache make patch && \
-	apk add --no-cache --virtual .build-tools perl gawk bison flex m4 expect \
+	apk add --no-cache --virtual .build-tools make patch perl gawk bison flex m4 expect \
 		texinfo mpc1-dev mpfr-dev gmp-dev isl-dev && \
 	mkdir /src && \
 	cd /src && \
@@ -53,7 +52,8 @@ RUN set -x && \
 	apk del --purge .build-tools && \
 	cd / && \
 	rm -rf /src && \
-	rm -rf /var/cache/apk
+	rm -rf /var/cache/apk && \
+	mkdir /var/cache/apk
 
 #--------------------------------------------------
 WORKDIR /app
