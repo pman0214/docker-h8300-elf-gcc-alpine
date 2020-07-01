@@ -2,7 +2,7 @@
 
 > H8/300 GCC on Alpine
 
-[![Docker Build](https://img.shields.io/docker/automated/pman0214/h8300-elf-gcc-alpine.svg)](https://hub.docker.com/r/pman0214/h8300-elf-gcc-alpine/)
+[![Docker Build](https://img.shields.io/docker/cloud/automated/pman0214/h8300-elf-gcc-alpine.svg)](https://hub.docker.com/r/pman0214/h8300-elf-gcc-alpine/)
 [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 
 ## Table of Contents
