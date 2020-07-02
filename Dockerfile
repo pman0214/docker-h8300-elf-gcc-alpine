@@ -4,7 +4,7 @@ RUN set -x && \
 	echo '### install build tools and download source files' && \
 	apk update && \
 	apk add --no-cache --virtual .build-tools make patch perl gawk bison flex m4 expect \
-		texinfo mpc1-dev mpfr-dev gmp-dev isl-dev && \
+	 	texinfo mpc1-dev mpfr-dev gmp-dev isl-dev && \
 	mkdir /src && \
 	cd /src && \
 	wget https://ftp.gnu.org/gnu/binutils/binutils-2.30.tar.bz2 && \
@@ -19,7 +19,10 @@ RUN set -x && \
 	mkdir /src/binutils-build && \
 	cd /src/binutils-build && \
 	../binutils-2.30/configure --target=h8300-elf \
-		--disable-multilib && \
+		--enable-multilib \
+		--disable-werror \
+		--disable-bootstrap \
+		--disable-nls && \
 	make && \
 	make install && \
 	echo '### gcc (1st build)' && \
@@ -28,8 +31,15 @@ RUN set -x && \
 	../gcc-5.5.0/configure \
 		--target=h8300-elf \
 		--enable-languages=c \
+		--enable-multilib \
 		--with-newlib \
+		--enable-lto \
+		--disable-libssp \
+		--disable-libgomp \
 		--disable-threads \
+		--disable-libmudflap \
+		--disable-libstdcxx-pch \
+		--disable-werror \
 		--disable-nls && \
 	make all-gcc && \
 	make install-gcc && \
@@ -37,7 +47,8 @@ RUN set -x && \
 	mkdir /src/newlib-build && \
 	cd /src/newlib-build && \
 	../newlib-2.5.0.20171222/configure --target=h8300-elf \
-		--disable-multilib && \
+		--enable-multilib \
+		--disable-nls && \
 	make && \
 	make install && \
 	echo '### gcc (2nd build)' && \
