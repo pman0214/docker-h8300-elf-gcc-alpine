@@ -40,6 +40,7 @@ RUN set -x && \
 		--disable-libmudflap \
 		--disable-libstdcxx-pch \
 		--disable-werror \
+		--disable-bootstrap \
 		--disable-nls && \
 	make all-gcc && \
 	make install-gcc && \
